@@ -1,8 +1,8 @@
-# MongoDB-Guide
+# MongoDB Quick Start Guide
 Quick start guide for installing and configuring MongoDB
 
 ## Install MongoDB on Windows
-https://www.mongodb.com/download-center
+[Download Center](https://www.mongodb.com/download-center)
 
 Simplify the path in the installer, I used C:\Program Files\MongoDB
 
@@ -37,10 +37,16 @@ db.createUser({
 [More Info on MongoDB Roles](https://docs.mongodb.com/manual/reference/built-in-roles/)
 
 
-In mongo.cfg (YAML file), add the following:
+In mongo.cfg (YAML), add the following:
 ```YAML
 security:
     authorization: enabled
+```
+
+Restart the MongoDB service
+```
+net stop MongoDB
+net start MongoDB
 ```
 
 [Config File Options](https://docs.mongodb.com/v3.0/reference/configuration-options/)
