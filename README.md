@@ -1,5 +1,5 @@
-# MongoDB Quick Start Guide
-Quick start guide for installing and configuring MongoDB
+# MongoDB Node.js Quick Start Guide
+Quick start guide for installing and configuring MongoDB and using the Node.js mongoose library.
 
 ## Install MongoDB on Windows
 [Download Center](https://www.mongodb.com/download-center)
@@ -126,7 +126,7 @@ Example:
 let animal = mongoose.model('animal', animalSchema);
 ```
 
-**Note:** Mongoose will *pluralize* the model name and use that as the collection name unless you pass in a collection name when defining your schema like this: `let animalSchema = new Schema({...}, {collection: 'animals'});`. For example, if your collection name is `animals`, then you would create your model like this: `let animal = mongoose.model('animal', animalSchema);`, and mongoose will use `'animal' + 's'`, or `animals` as the collection name.
+**Note:** Mongoose will *pluralize* the model name and use that as the collection name unless you pass in the name when defining your schema like this: `let animalSchema = new Schema({...}, {collection: 'animals'});`. For example, if your collection name is `animals`, then you would create your model like this: `let animal = mongoose.model('animal', animalSchema);`, and mongoose will use `'animal' + 's'`, or `animals` as the collection name.
 
 Instance of `Models` **ARE** documents.
 
