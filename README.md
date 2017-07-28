@@ -50,3 +50,27 @@ net start MongoDB
 ```
 
 [Config File Options](https://docs.mongodb.com/v3.0/reference/configuration-options/)
+
+
+# Using Mongoose
+
+[Mongoose Docs](http://mongoosejs.com)
+
+## Installation
+
+`npm install --save mongoose`
+
+## Basic usage
+
+```js
+const mongoose = require('mongoose');
+
+// Connect to db
+
+// Pattern
+//mongoose.connect('mongodb://<username>:<password>@host/<dbname>', {<options>});
+
+// Example
+mongoose.connect('mongodb://brycejech:myPassword@localhost/test', {useMongoClient: true, keepAlive: 1});
+```
+
