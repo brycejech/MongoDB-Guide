@@ -60,7 +60,7 @@ net start MongoDB
 
 `npm install --save mongoose`
 
-## Basic usage
+## Connecting
 
 ```js
 const mongoose = require('mongoose');
@@ -72,5 +72,46 @@ const mongoose = require('mongoose');
 
 // Example
 mongoose.connect('mongodb://brycejech:myPassword@localhost/test', {useMongoClient: true, keepAlive: 1});
+// Note that special chars in username/password should be URL percent-encoded
 ```
 
+## Schema
+
+With Mongoose, everything is derived from a Schema. Schemas map to a collection and defines what documents in that collection look like. Each key in a Schema defines a property that will be cast to it's associated SchemaType.
+
+SchemaTypes:
+* String
+* Number
+* Date
+* Buffer
+* Boolean
+* Mixed
+* ObjectId
+* Array
+
+Example:
+
+```js
+const Schema = mongoose.Schema;
+
+let animalSchema = new Schema({
+    name:       String,
+    species:    String,
+    actions:    [String], // Array of strings
+    numLegs:    Number,
+    isAlive:    Boolean,
+    born:       Date
+});
+```
+
+## Models
+
+To use the Schema definition, have to convert our Schema into a Model. Pass the schema to `mongoose.model(modelName, schema);`.
+
+Example:
+
+```js
+var animal = mongoose.model('animal', animalSchema);
+```
+
+Instance of `Models` *ARE* documents.
