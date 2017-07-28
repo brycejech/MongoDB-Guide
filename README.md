@@ -95,6 +95,7 @@ Example:
 const Schema = mongoose.Schema;
 
 let animalSchema = new Schema({
+    id:         Schema.Types.ObjectId, // SchemaTypes that are not standard js types seem to be in Schema.Types
     name:       String,
     species:    String,
     actions:    [String], // Array of strings
