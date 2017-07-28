@@ -106,15 +106,29 @@ let animalSchema = new Schema({
 });
 ```
 
-**Note:** In order to specify a collection, you must either pass an optional options object as a second argument to the Schema constructor or use the singluar form of your collection name when converting your Schema to a Model. For example, if your collection name is `animals`, then you would create your model like this: `let animal = mongoose.model('animal', animalSchema);`. Mongoose will *pluralize* the model name and use that as the collection name unless you pass in a collection name when defining your schema like this: `let animalSchema = new Schema({...}, {collection: 'animals'});`.
+**Note:** In order to specify a collection when defining a schema, you must pass in an optional options object as the second argument with the collection name to the `Schema` constructor.
+
+Example:
+
+```js
+let animalSchema = new Schema({<schema object>}, {collection: 'animals'});
+```
+
+Alternatively, if your collection name is plural, i.e. 'animals', then you may indicate your collection name as the singular form of the word when converting your Schema to a Model, more on that later.
 
 ## Models
 
-To use the Schema definition, have to convert our Schema into a Model. Pass the schema to `mongoose.model(modelName, schema);`.
+To use the Schema definition, we have to convert our Schema into a Model. Pass a model name and the schema to `mongoose.model(modelName, schema);`.
 
 Example:
 
 ```js
 let animal = mongoose.model('animal', animalSchema);
 ```
+
+**Note:** Mongoose will *pluralize* the model name and use that as the collection name unless you pass in a collection name when defining your schema like this: `let animalSchema = new Schema({...}, {collection: 'animals'});`. For example, if your collection name is `animals`, then you would create your model like this: `let animal = mongoose.model('animal', animalSchema);`, and mongoose will use `'animal' + 's'`, or `animals` as the collection name.
+
 Instance of `Models` **ARE** documents.
+
+
+
