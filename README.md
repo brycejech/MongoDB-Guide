@@ -95,7 +95,8 @@ Example:
 const Schema = mongoose.Schema;
 
 let animalSchema = new Schema({
-    id:         Schema.Types.ObjectId, // SchemaTypes that are not standard js types seem to be in Schema.Types
+    // SchemaTypes that are not standard js types seem to be in Schema.Types
+    id:         Schema.Types.ObjectId,
     name:       String,
     species:    String,
     actions:    [String], // Array of strings
@@ -105,6 +106,8 @@ let animalSchema = new Schema({
 });
 ```
 
+**Note:** In order to specify a collection, you must either pass an optional options object as a second argument to the Schema constructor or use the singluar form of your collection name when converting your Schema to a Model. For example, if your collection name is `animals`, then you would create your model like this: `let animal = mongoose.model('animal', animalSchema);`. Mongoose will *pluralize* the model name and use that as the collection name unless you pass in a collection name when defining your schema like this: `let animalSchema = new Schema({...}, {collection: 'animals'});`.
+
 ## Models
 
 To use the Schema definition, have to convert our Schema into a Model. Pass the schema to `mongoose.model(modelName, schema);`.
@@ -112,7 +115,6 @@ To use the Schema definition, have to convert our Schema into a Model. Pass the 
 Example:
 
 ```js
-var animal = mongoose.model('animal', animalSchema);
+let animal = mongoose.model('animal', animalSchema);
 ```
-
-Instance of `Models` *ARE* documents.
+Instance of `Models` **ARE** documents.
